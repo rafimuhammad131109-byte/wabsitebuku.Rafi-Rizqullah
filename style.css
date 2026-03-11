@@ -1,0 +1,377 @@
+/* =========================================
+   1. VARIABEL & RESET (Global Setup)
+   ========================================= */
+:root {
+    --primary-color: #0288d1;       /* Biru Langit Utama */
+    --secondary-color: #e1f5fe;     /* Biru Sangat Muda */
+    --accent-color: #ff6f00;        /* Oranye untuk Harga/Highlight */
+    --text-dark: #2c3e50;           /* Teks Gelap */
+    --text-light: #ffffff;          /* Teks Putih */
+    --bg-body: #f0f4f8;             /* Background Halaman */
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --font-main: 'Poppins', sans-serif;
+    --font-serif: 'Georgia', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Background gradasi biru langit yang tenang */
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    font-family: var(--font-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================================
+   2. TYPOGRAPHY (Judul & Teks)
+   ========================================= */
+h1 {
+    color: var(--text-light);
+    background-color: rgba(2, 136, 209, 0.9); /* Biru solid transparan */
+    font-family: var(--font-main);
+    text-align: center;
+    font-size: 3rem; /* Perbaikan: tanpa tanda kutip */
+    padding: 25px;
+    margin: 30px 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-family: var(--font-main);
+    text-align: center;
+    font-size: 2rem;
+    margin: 40px 0 20px 0;
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Garis bawah dekoratif pada judul */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+p {
+    color: #444;
+    font-family: var(--font-main);
+    text-align: justify;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* =========================================
+   3. NAVBAR (Navigasi)
+   ========================================= */
+.navbar {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    background-color: var(--secondary-color);
+    color: #01579b;
+}
+
+/* =========================================
+   4. DAFTAR PRODUK (Grid Buku)
+   ========================================= */
+.daftar-produk {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 40px;
+}
+
+.produk {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.produk:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+/* Perbaikan Gambar agar terlihat semua & rapi */
+.produk img {
+    width: 10%;
+    height: auto;
+    object-fit: cover; /* Mencegah gambar gepeng */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.produk h2 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.produk h3 {
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.harga {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    margin: 10px 0;
+    display: block;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.deskripsi {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   5. ARTIKEL (Konten Bacaan)
+   ========================================= */
+.artikel {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    font-family: var(--font-serif);
+    line-height: 1.8;
+    color: #333;
+    border-left: 5px solid var(--primary-color);
+}
+
+.artikel .penulis {
+    font-style: italic;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.artikel .sampul {
+    width: 200px;
+    float: right;
+    margin: 0 0 20px 20px;
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+.artikel blockquote {
+    font-style: italic;
+    padding-left: 20px;
+    margin: 20px 0;
+    border-left: 4px solid var(--accent-color);
+    color: #555;
+    background-color: var(--secondary-color);
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+.btn-kembali {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background 0.3s;
+    box-shadow: 0 4px 10px rgba(2, 136, 209, 0.3);
+}
+
+.btn-kembali:hover {
+    background-color: #01579b;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   6. FORMULIR (Pendaftaran/Peminjaman)
+   ========================================= */
+.formulir {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    border-top: 5px solid var(--primary-color);
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    font-family: var(--font-main);
+    transition: border 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(2, 136, 209, 0.1);
+}
+
+form button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background-color: #01579b;
+}
+
+/* =========================================
+   7. CARD BUKU & VIDEO (Embed)
+   ========================================= */
+.card-buku {
+    background-color: white;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    margin: 20px auto;
+    display: block;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Rasio 16:9 */
+    height: 0;
+    background-color: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.konten {
+    padding: 25px;
+}
+
+.judul-buku {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.harga-buku {
+    font-size: 22px;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* =========================================
+   8. RATING (Bintang)
+   ========================================= */
+.rating {
+    font-size: 2rem;
+    color: #FFD700;
+    margin: 10px 0;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
